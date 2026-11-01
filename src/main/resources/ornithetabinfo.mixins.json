@@ -1,12 +1,14 @@
 {
 	"required": true,
 	"minVersion": "0.8",
-	"package": "com.example.example_mod.mixin",
+	"package": "dev.xingkun.ornithetabinfo.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
+		"server.MinecraftServerMixin"
 	],
 	"client": [
-		"TitleScreenMixin"
+		"client.GameGuiMixin",
+		"client.IntegratedServerMixin"
 	],
 	"server": [
 	],

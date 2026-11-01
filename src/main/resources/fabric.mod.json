@@ -1,30 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "example_mod",
+	"id": "ornithetabinfo",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Ornithe Tab Info",
+	"description": "Shows the server autosave countdown, last autosave duration, TPS and MSPT above the TAB player list.",
 	"authors": [
-		"Me!"
+		"CHENXINGKUN"
 	],
-	"contact": {
-		"homepage": "https://example.com/",
-		"sources": "https://github.com/OrnitheMC/ornithe-template-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/example_mod/icon.png",
+	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
 		"init": [
-			"com.example.example_mod.ExampleMod"
+			"dev.xingkun.ornithetabinfo.OrnitheTabInfo"
+		],
+		"client-init": [
+			"dev.xingkun.ornithetabinfo.client.OrnitheTabInfoClient"
 		]
 	},
 	"mixins": [
-		"example_mod.mixins.json"
+		"ornithetabinfo.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.17.3",
-		"minecraft": "1.7.2",
-		"osl-entrypoints": ">=0.4.0"
+		"minecraft": "1.7.10",
+		"osl-entrypoints": ">=0.6.1",
+		"osl-networking": ">=0.10.0"
 	}
 }

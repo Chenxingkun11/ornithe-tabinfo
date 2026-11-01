@@ -30,6 +30,15 @@ dependencies {
 	ploceus.dependOsl(project.osl_version)
 }
 
+loom {
+	runs {
+		client {
+			// Minecraft 1.7.10's main class rejects launches without --userProperties
+			programArgs '--userProperties', '{}'
+		}
+	}
+}
+
 processResources {
 	inputs.property 'version', version
 
