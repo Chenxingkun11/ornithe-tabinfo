@@ -2,7 +2,10 @@
 
 [中文](#中文) | [English](#english)
 
-当前版本 / Current version: **1.0.0** · Minecraft **1.7.10** · Ornithe (Fabric Loader) + OSL · MIT
+当前版本 / Current version: **1.0.0** · Minecraft **1.7.10** · Ornithe **gen1** (Fabric Loader) + OSL · MIT
+
+本分支 `gen1/fabric` 面向 Ornithe gen1 环境；gen2 版本在 `gen2/fabric` 分支。
+This `gen1/fabric` branch targets Ornithe gen1; the gen2 build lives on the `gen2/fabric` branch.
 
 ---
 
@@ -43,8 +46,9 @@ TPS: 20.0 | MSPT: 12.5ms
 ### 运行要求
 
 - Minecraft 1.7.10
-- Ornithe 的 Fabric Loader（开发时使用 0.19.5，`fabric.mod.json` 要求 `>=0.17.3`）
-- OSL（Ornithe Standard Libraries），开发时使用 0.21.0；需要其中的 `osl-entrypoints >=0.6.1` 与 `osl-networking >=0.10.0`
+- 以 **gen1** 中间名映射安装的 Ornithe Fabric Loader（开发时使用 0.19.5，`fabric.mod.json` 要求 `>=0.17.3`）
+- gen1 版 OSL（Ornithe Standard Libraries），开发时使用 0.16.3；需要其中的 `osl-entrypoints >=0.4.3` 与 `osl-networking >=0.8.0`
+- gen1 与 gen2 的 JAR 不能混用：gen2 版 OSL（如 0.21.0、0.23.0）和 gen2 版本 Mod 在 gen1 环境里都无法生效
 - 运行时 Java 8 即可（字节码目标为 Java 8）
 
 ### 构建
@@ -72,14 +76,14 @@ gradlew.bat build
 
 客户端：
 
-1. 用 Ornithe 安装器为 Minecraft 1.7.10 安装 Ornithe（Fabric Loader）。
-2. 把 OSL 和 `ornithe-tabinfo-1.0.0+mc1.7.10.jar` 放进该实例的 `mods` 文件夹。
+1. 用 Ornithe 安装器为 Minecraft 1.7.10 安装 gen1 的 Ornithe（Fabric Loader）。
+2. 把 gen1 版 OSL 和 `ornithe-tabinfo-1.0.0+mc1.7.10.jar` 放进该实例的 `mods` 文件夹。
 3. 启动游戏，进入世界或服务器后按住 TAB。
 
 服务端：
 
-1. 为 1.7.10 服务端安装 Ornithe（Fabric Loader）。
-2. 把 OSL 和同一个 `ornithe-tabinfo-1.0.0+mc1.7.10.jar` 放进服务端的 `mods` 文件夹。
+1. 为 1.7.10 服务端安装 gen1 的 Ornithe（Fabric Loader）。
+2. 把 gen1 版 OSL 和同一个 `ornithe-tabinfo-1.0.0+mc1.7.10.jar` 放进服务端的 `mods` 文件夹。
 3. 重启服务端。
 
 客户端和服务端使用同一个 JAR。Ornithe 与 OSL 的获取方式见 [ornithemc.net](https://ornithemc.net)。
@@ -160,8 +164,9 @@ In singleplayer with no other players and no TAB objective, vanilla does not dra
 ### Requirements
 
 - Minecraft 1.7.10
-- Ornithe's Fabric Loader (developed against 0.19.5; `fabric.mod.json` requires `>=0.17.3`)
-- OSL (Ornithe Standard Libraries), developed against 0.21.0; needs `osl-entrypoints >=0.6.1` and `osl-networking >=0.10.0`
+- Ornithe Fabric Loader installed with **gen1** intermediary (developed against 0.19.5; `fabric.mod.json` requires `>=0.17.3`)
+- The gen1 build of OSL (Ornithe Standard Libraries), developed against 0.16.3; needs `osl-entrypoints >=0.4.3` and `osl-networking >=0.8.0`
+- gen1 and gen2 JARs do not mix: gen2 OSL (e.g. 0.21.0, 0.23.0) and the gen2 build of this mod do not work in a gen1 environment
 - Java 8 at runtime (bytecode targets Java 8)
 
 ### Building
@@ -189,14 +194,14 @@ Output in `build/libs/`:
 
 Client:
 
-1. Install Ornithe (Fabric Loader) for Minecraft 1.7.10 with the Ornithe installer.
-2. Put OSL and `ornithe-tabinfo-1.0.0+mc1.7.10.jar` in the instance's `mods` folder.
+1. Install gen1 Ornithe (Fabric Loader) for Minecraft 1.7.10 with the Ornithe installer.
+2. Put the gen1 build of OSL and `ornithe-tabinfo-1.0.0+mc1.7.10.jar` in the instance's `mods` folder.
 3. Launch the game, join a world or server, and hold TAB.
 
 Server:
 
-1. Install Ornithe (Fabric Loader) on the 1.7.10 server.
-2. Put OSL and the same `ornithe-tabinfo-1.0.0+mc1.7.10.jar` in the server's `mods` folder.
+1. Install gen1 Ornithe (Fabric Loader) on the 1.7.10 server.
+2. Put the gen1 build of OSL and the same `ornithe-tabinfo-1.0.0+mc1.7.10.jar` in the server's `mods` folder.
 3. Restart the server.
 
 Client and server use the same JAR. See [ornithemc.net](https://ornithemc.net) for getting Ornithe and OSL.

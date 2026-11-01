@@ -14,9 +14,6 @@ public class OrnitheTabInfo implements ModInitializer {
 
 	@Override
 	public void init() {
-		// Touching TabInfoProtocol.CHANNEL registers the channel with OSL on both sides.
-		// Snapshots are pushed from MinecraftServerMixin, and OSL only delivers them to
-		// clients that declared the channel.
 		LOGGER.info("Ornithe Tab Info initialized (channel {}, protocol v{})", TabInfoProtocol.CHANNEL, TabInfoProtocol.VERSION);
 	}
 }

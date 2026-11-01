@@ -23,7 +23,7 @@
 	"depends": {
 		"fabricloader": ">=0.17.3",
 		"minecraft": "1.7.10",
-		"osl-entrypoints": ">=0.6.1",
-		"osl-networking": ">=0.10.0"
+		"osl-entrypoints": ">=0.4.3",
+		"osl-networking": ">=0.8.0"
 	}
 }

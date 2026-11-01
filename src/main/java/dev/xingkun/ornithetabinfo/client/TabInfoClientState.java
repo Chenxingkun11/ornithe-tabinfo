@@ -6,11 +6,6 @@ import net.minecraft.client.network.handler.ClientPlayNetworkHandler;
 
 import dev.xingkun.ornithetabinfo.data.TabInfoSnapshot;
 
-/**
- * Latest snapshot received from the server, bound to the connection it arrived on.
- *
- * <p>Written from the packet handler and read from the render thread.
- */
 public final class TabInfoClientState {
 
 	private static final long STALE_AFTER_NANOS = 3_000_000_000L;

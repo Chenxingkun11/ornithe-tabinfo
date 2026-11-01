@@ -29,8 +29,6 @@ public abstract class MinecraftServerMixin implements ServerMetricsAccess {
 		this.ornithetabinfo$metrics.onTickStart(System.nanoTime());
 	}
 
-	// The autosave branch is `if (ticks % 900 == 0) { playerManager.saveAll(); saveWorlds(true); }`;
-	// timing spans both calls so player data and chunk saving are included.
 	@Inject(
 		method = "tick",
 		at = @At(
@@ -60,8 +58,6 @@ public abstract class MinecraftServerMixin implements ServerMetricsAccess {
 
 		if (ServerMetricsTracker.shouldSync(this.ticks)) {
 			TabInfoSnapshot snapshot = this.ornithetabinfo$metrics.snapshot(this.ticks);
-			// send(channel, ...) only reaches players whose client declared the channel,
-			// so vanilla clients never receive this payload.
 			ServerPlayNetworking.send(TabInfoProtocol.CHANNEL, buffer -> TabInfoProtocol.write(buffer, snapshot));
 		}
 	}

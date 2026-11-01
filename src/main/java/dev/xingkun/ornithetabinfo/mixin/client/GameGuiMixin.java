@@ -23,7 +23,7 @@ public abstract class GameGuiMixin {
 
 	@Shadow @Final private Minecraft minecraft;
 
-	/** Resolved once per frame so the list offset and the panel always agree on the panel height. */
+
 	@Unique
 	private TabInfoSnapshot ornithetabinfo$snapshot;
 
@@ -32,7 +32,7 @@ public abstract class GameGuiMixin {
 		this.ornithetabinfo$snapshot = TabInfoClientState.get(this.minecraft.getNetworkHandler());
 	}
 
-	// The first int constant 10 after profiler.push("playerList") is the list's starting y (`int io = 10;`).
+
 	@ModifyConstant(
 		method = "render",
 		slice = @Slice(
@@ -51,8 +51,6 @@ public abstract class GameGuiMixin {
 		return TabInfoHudRenderer.playerListTop(this.ornithetabinfo$snapshot);
 	}
 
-	// Drawn at TAIL rather than inside the player list branch: vanilla skips that branch in
-	// singleplayer with no other players and no TAB objective, but the panel should still show.
 	@Inject(method = "render", at = @At("TAIL"))
 	private void ornithetabinfo$renderPanel(float tickDelta, boolean screenOpen, int mouseX, int mouseY, CallbackInfo ci) {
 		if (this.minecraft.options.playerListKey.isPressed()) {

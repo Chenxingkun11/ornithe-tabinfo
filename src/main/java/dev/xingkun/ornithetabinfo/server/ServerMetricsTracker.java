@@ -2,16 +2,10 @@ package dev.xingkun.ornithetabinfo.server;
 
 import dev.xingkun.ornithetabinfo.data.TabInfoSnapshot;
 
-/**
- * Samples tick timing and autosave duration for one server instance.
- *
- * <p>All methods are called from the server thread.
- */
 public final class ServerMetricsTracker {
 
-	/** Vanilla 1.7.10 autosaves when {@code ticks % 900 == 0}. */
 	public static final int AUTOSAVE_INTERVAL_GT = 900;
-	/** A snapshot is pushed to clients once per this many server ticks. */
+
 	public static final int SYNC_INTERVAL_GT = 20;
 
 	private static final int WINDOW_TICKS = 100;
@@ -44,10 +38,6 @@ public final class ServerMetricsTracker {
 		this.tickDurations.add(now - this.tickStart);
 	}
 
-	/**
-	 * Drops the interval that will end at the next tick start, so time spent with
-	 * the integrated server paused does not count as a slow tick rate.
-	 */
 	public void skipNextTickInterval() {
 		this.hasPreviousTickStart = false;
 	}
@@ -96,7 +86,6 @@ public final class ServerMetricsTracker {
 			}
 		}
 
-		/** @return the mean of the stored samples, or NaN if there are none */
 		double average() {
 			return this.count == 0 ? Double.NaN : (double) this.sum / this.count;
 		}

@@ -16,8 +16,6 @@ public abstract class IntegratedServerMixin {
 
 	@Shadow private boolean paused;
 
-	// While paused, IntegratedServer.tick() skips super.tick(), so the gap between two
-	// real ticks would otherwise be measured as one very long tick interval.
 	@Inject(
 		method = "tick",
 		at = @At(

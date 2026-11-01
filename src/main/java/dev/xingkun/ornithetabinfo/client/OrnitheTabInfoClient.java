@@ -15,7 +15,7 @@ public class OrnitheTabInfoClient implements ClientModInitializer {
 	@Override
 	public void initClient() {
 		// Registering a listener is also what declares the channel to the server during the OSL handshake.
-		ClientPlayNetworking.registerListener(TabInfoProtocol.CHANNEL, (ctx, buffer) -> {
+		ClientPlayNetworking.registerListener(TabInfoProtocol.CHANNEL, (minecraft, handler, buffer) -> {
 			TabInfoSnapshot snapshot = TabInfoProtocol.read(buffer);
 
 			if (snapshot == null) {
@@ -23,13 +23,14 @@ public class OrnitheTabInfoClient implements ClientModInitializer {
 					warnedUnsupportedProtocol = true;
 					OrnitheTabInfo.LOGGER.warn("Ignoring {} packets with an unsupported protocol version (expected v{})", TabInfoProtocol.CHANNEL, TabInfoProtocol.VERSION);
 				}
-				return;
+				return true;
 			}
 
-			TabInfoClientState.accept(ctx.networkHandler(), snapshot);
+			TabInfoClientState.accept(handler, snapshot);
+			return true;
 		});
 
-		ClientConnectionEvents.LOGIN.register(ctx -> TabInfoClientState.clear());
-		ClientConnectionEvents.DISCONNECT.register(ctx -> TabInfoClientState.clear());
+		ClientConnectionEvents.LOGIN.register(minecraft -> TabInfoClientState.clear());
+		ClientConnectionEvents.DISCONNECT.register(minecraft -> TabInfoClientState.clear());
 	}
 }

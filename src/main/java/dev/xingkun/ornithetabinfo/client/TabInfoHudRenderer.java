@@ -11,20 +11,15 @@ import net.minecraft.client.render.Window;
 
 import dev.xingkun.ornithetabinfo.data.TabInfoSnapshot;
 
-/**
- * Draws the status panel at the top of the screen, directly above the vanilla player list.
- */
 public final class TabInfoHudRenderer {
 
 	private static final String TITLE = "Ornithe Tab Info";
 	private static final String UNAVAILABLE = "Server data unavailable";
 
-	/** Vanilla draws the player list starting at y = 10; the panel takes that spot instead. */
 	private static final int TOP = 10;
 	private static final int LINE_HEIGHT = 9;
 	private static final int PADDING_X = 3;
 
-	/** Same 50% black the vanilla player list uses for its background. */
 	private static final int BACKGROUND_COLOR = Integer.MIN_VALUE;
 	private static final int TITLE_COLOR = 0xFFFF55;
 	private static final int TEXT_COLOR = 0xFFFFFF;
@@ -33,9 +28,6 @@ public final class TabInfoHudRenderer {
 	private TabInfoHudRenderer() {
 	}
 
-	/**
-	 * @return the y the vanilla player list should start at so it sits 1px below the panel
-	 */
 	public static int playerListTop(TabInfoSnapshot snapshot) {
 		return TOP + lineCount(snapshot) * LINE_HEIGHT + 1;
 	}
@@ -66,7 +58,7 @@ public final class TabInfoHudRenderer {
 		panelWidth += 2 * PADDING_X;
 
 		int left = (screenWidth - panelWidth) / 2;
-		// Background matches the vanilla list's 1px margin above the first line and ends right after the last glyph row.
+
 		GuiElement.fill(left, TOP - 1, left + panelWidth, TOP + lines.length * LINE_HEIGHT - 1, BACKGROUND_COLOR);
 
 		for (int i = 0; i < lines.length; i++) {

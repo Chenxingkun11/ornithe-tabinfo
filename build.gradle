@@ -10,6 +10,10 @@ base {
 version = "${project.version}+mc${project.minecraft_version}"
 group = project.maven_group
 
+ploceus {
+	setIntermediaryGeneration(project.intermediary_gen as int)
+}
+
 repositories {
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
